@@ -15,7 +15,7 @@ class User:
         """
         method that saves user new user objects to empty users list.
         """
-        User.users_list.append(self) 
+        User.users_list.append(self)
 
 
 # class Credentials:
@@ -24,11 +24,8 @@ class User:
 #     """
 
 
-# credentials_list = []
-
-
 # def __init__(self, site, user_name, password):
 
-#         self.site = site
-#         self.user_name = user_name
-#         self.password = password
+#     self.site = site
+#     self.user_name = user_name
+#     self.password = password

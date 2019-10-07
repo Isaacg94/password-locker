@@ -29,6 +29,27 @@ class TestUser(unittest.TestCase):
         self.assertEqual(len(User.users_list),1)
 
 
+class TestCredentials(unittest.TestCase):
+    """
+    Test class that tests the credentials class.
+    """
+    def setUp(self):
+        """
+        Method that will run before each test.
+        """
+        self.new_credential = Credentials("Instagram", "Isaacgish", "123456")
+
+    def test__init__(self):
+        """
+        Test case to check if credential instances are created correctly.
+        """
+        self.assertEqual(self.new_credential.site, "Instagram")
+        self.assertEqual(self.new_credential.user_name, "isaacgish")
+        self.assertEqual(self.new_credential.password, "123456")
+
+
+
+
 
 
 if __name__ == "__main__":
