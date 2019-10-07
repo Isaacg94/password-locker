@@ -35,3 +35,15 @@ class Credentials:
         Method that saves credential objects in the credentials list.
         """
         Credentials.credentials_list.append(self)
+
+
+    @classmethod
+    def display_credential(cls, user_name):
+        """
+        Class method that displays saved credentials.
+        """
+        users_credentials_lists = []
+        for credential in cls.credentials_list:
+            if credential.user_name == user_name:
+                users_credentials_lists.append(credential)
+        return users_credentials_lists

@@ -57,6 +57,13 @@ class TestCredentials(unittest.TestCase):
         instagram.save_credential()
         self.assertEqual(len(Credentials.credentials_list), 2)
 
+    def tearDown(self):
+        """
+        A method that clears the credentials object after test.
+        """
+        Credentials.credentials_list = []
+        User.users_list = []
+
     def test_display_credential(self):
         """
         Test to check if credentials can be displayed.
