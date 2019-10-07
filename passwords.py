@@ -1,5 +1,6 @@
 import pyperclip
 
+
 class User:
     """
     Class that stores new instances of users.
@@ -18,6 +19,17 @@ class User:
         method that saves user new user objects to empty users list.
         """
         User.users_list.append(self)
+
+    @classmethod
+    def check_user(cls, first_name, password):
+        """
+        Method that checks if the names and password match the ones in users list.
+        """
+        current_user = ""
+        for user in cls.users_list:
+            if(user.first_name == first_name and user.password == password):
+                current_user = user.first_name
+        return current_user
 
 
 class Credentials:
@@ -38,7 +50,6 @@ class Credentials:
         Method that saves credential objects in the credentials list.
         """
         Credentials.credentials_list.append(self)
-
 
     @classmethod
     def display_credential(cls, user_name):
