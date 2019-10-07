@@ -14,4 +14,9 @@ def save_user(user):
     """
     User.save_user(user)
 
-def 
+def user_exists(first_name, password):
+    """
+    Function to verify user exists.
+    """
+    checking_user = User.check_user(first_name, password)
+    return checking_user
