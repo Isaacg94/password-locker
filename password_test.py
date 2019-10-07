@@ -1,5 +1,5 @@
 import unittest
-from passwords import User, Credentials
+from passwords import User
 
 
 class TestUser(unittest.TestCase):
@@ -13,11 +13,13 @@ class TestUser(unittest.TestCase):
         """
         self.new_user = User("Isaac", "Gichuru", "123456")
 
-    def test_init__(self):
+    def test__init__(self):
         """
         Method to d=test if object is instanciated properly.
         """
         self.assertEqual(self.new_user.first_name, "Isaac")
-        self.assertEqual(sel)
+        self.assertEqual(self.new_user.last_name, "Gichuru")
+        self.assertEqual(self.new_user.password, "123456")
 
-
+if __name__ == "__main__":
+    unittest.main()
