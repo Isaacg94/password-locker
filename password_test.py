@@ -73,6 +73,17 @@ class TestCredentials(unittest.TestCase):
         instagram.save_credential()
         self.assertEqual(len(Credentials.display_credential(instagram.user_name)), 2)
 
+    def test_find_by_site(self):
+        """
+        Method to test if credentials can be searched by site correctly.
+        """
+        self.new_credential.save_credential()
+        instagram = Credentials("instagram", "isaacgish", "123456")
+        instagram.save_credential()
+        credential_exists = Credentials.find_by_site("instagram")
+        self.assertEqual(credential_exists, instagram)
+
+
 
 if __name__ == "__main__":
     unittest.main()
