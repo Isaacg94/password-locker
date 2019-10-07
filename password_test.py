@@ -1,5 +1,5 @@
 import unittest
-from passwords import User
+from passwords import User, Credentials
 
 
 class TestUser(unittest.TestCase):
@@ -26,18 +26,19 @@ class TestUser(unittest.TestCase):
         Test case to check if new user object can be saved to empty user list.
         """
         self.new_user.save_user()
-        self.assertEqual(len(User.users_list),1)
+        self.assertEqual(len(User.users_list), 1)
 
 
 class TestCredentials(unittest.TestCase):
     """
     Test class that tests the credentials class.
     """
+
     def setUp(self):
         """
         Method that will run before each test.
         """
-        self.new_credential = Credentials("Instagram", "Isaacgish", "123456")
+        self.new_credential = Credentials("Instagram", "isaacgish", "123456")
 
     def test__init__(self):
         """
@@ -46,10 +47,6 @@ class TestCredentials(unittest.TestCase):
         self.assertEqual(self.new_credential.site, "Instagram")
         self.assertEqual(self.new_credential.user_name, "isaacgish")
         self.assertEqual(self.new_credential.password, "123456")
-
-
-
-
 
 
 if __name__ == "__main__":

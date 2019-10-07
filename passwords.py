@@ -18,14 +18,14 @@ class User:
         User.users_list.append(self)
 
 
-# class Credentials:
-#     """
-#     Class that stores new instances of users credentials.
-#     """
+class Credentials:
+    """
+    Class that stores new instances of users credentials.
+    """
 
 
-# def __init__(self, site, user_name, password):
+    def __init__(self, site, user_name, password):
 
-#     self.site = site
-#     self.user_name = user_name
-#     self.password = password
+        self.site = site
+        self.user_name = user_name
+        self.password = password
