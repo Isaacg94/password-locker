@@ -27,3 +27,9 @@ def create_credential(site, user_name, password):
     """
     new_credential = Credentials(site, user_name, password)
     return new_credential
+
+def save_credentials(credential):
+    """
+    Function to save new credentials.
+    """
+    Credentials.save_credential(credential)
