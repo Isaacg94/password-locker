@@ -28,6 +28,6 @@ def __init__(self, site, user_name, password):
         self.password = password
 
 
-new_credential = Credential("instagram", "isaacg94", "12345678")
+new_credential = Credentials("instagram", "isaacg94", "12345678")
 
 print(new_credential.site,new_credential.user_name,new_credential.password)
