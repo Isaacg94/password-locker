@@ -20,3 +20,10 @@ def user_exists(first_name, password):
     """
     checking_user = User.check_user(first_name, password)
     return checking_user
+
+def create_credential(site, user_name, password):
+    """
+    Function that creates new credentials.
+    """
+    new_credential = Credentials(site, user_name, password)
+    return new_credential
