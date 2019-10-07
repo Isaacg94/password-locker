@@ -48,6 +48,15 @@ class TestCredentials(unittest.TestCase):
         self.assertEqual(self.new_credential.user_name, "isaacgish")
         self.assertEqual(self.new_credential.password, "123456")
 
+    def test_save_credential(self):
+        """
+        Test if credentials can be saved to the empty credential list.
+        """
+        self.new_credential.save_credential()
+        instagram = Credentials("instagram", "isaacgish", "123456")
+        instagram.save_credential()
+        self.assertEqual(len(Credentials.credentials_list), 2)
+
 
 if __name__ == "__main__":
     unittest.main()
