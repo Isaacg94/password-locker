@@ -47,3 +47,12 @@ class Credentials:
             if credential.user_name == user_name:
                 users_credentials_lists.append(credential)
         return users_credentials_lists
+
+    @classmethod
+    def find_by_site(cls, site):
+        """
+        Class method that allows credentials to be found through site name.
+        """
+        for credential in cls.credentials_list:
+            if credential.site == site:
+                return credential
