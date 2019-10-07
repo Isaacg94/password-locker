@@ -1,3 +1,5 @@
+import pyperclip
+
 class User:
     """
     Class that stores new instances of users.
@@ -23,6 +25,7 @@ class Credentials:
     Class that stores new instances of users credentials.
     """
     credentials_list = []
+    users_credentials_lists = []
 
     def __init__(self, site, user_name, password):
 
@@ -56,3 +59,11 @@ class Credentials:
         for credential in cls.credentials_list:
             if credential.site == site:
                 return credential
+
+    @classmethod
+    def copy_credential(cls, site):
+        """
+        Method that allows credentials to be copied.
+        """
+        find_credential = Credentials.find_by_site(site)
+        return pyperclip.copy(find_credential.password)
