@@ -22,10 +22,16 @@ class Credentials:
     """
     Class that stores new instances of users credentials.
     """
-
+    credentials_list = []
 
     def __init__(self, site, user_name, password):
 
         self.site = site
         self.user_name = user_name
         self.password = password
+
+    def save_credential(self):
+        """
+        Method that saves credential objects in the credentials list.
+        """
+        Credentials.credentials_list.append(self)
