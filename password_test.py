@@ -57,6 +57,15 @@ class TestCredentials(unittest.TestCase):
         instagram.save_credential()
         self.assertEqual(len(Credentials.credentials_list), 2)
 
+    def test_display_credential(self):
+        """
+        Test to check if credentials can be displayed.
+        """
+        self.new_credential.save_credential()
+        instagram = Credentials("instagram", "isaacgish", "123456")
+        instagram.save_credential()
+        self.assertEqual(len(Credentials.display_credential(instagram.user_name)), 2)
+
 
 if __name__ == "__main__":
     unittest.main()
