@@ -25,7 +25,7 @@ class User:
         """
         Method that checks if the names and password match the ones in users list.
         """
-        current_user = ""
+        # current_user = ""
         for user in cls.users_list:
             if(user.first_name == first_name and user.password == password):
                 return True
@@ -51,6 +51,12 @@ class Credentials:
         """
         Credentials.credentials_list.append(self)
 
+    def delete_credential(self):
+        """
+        Method that allows a saved credential to be deleted from the credentials list
+        """
+        Credentials.credentials_list.remove(self)
+
     @classmethod
     def display_credential(cls):
         """
@@ -72,9 +78,11 @@ class Credentials:
                 return credential
 
     @classmethod
-    def copy_credential(cls, site):
+    def copy_password(cls, site):
         """
         Method that allows credentials to be copied.
         """
-        find_credential = Credentials.find_by_site(site)
-        return pyperclip.copy(find_credential.password)
+        credential_found = Credentials.find_by_site(site)
+        pyperclip.copy(credential_found.password)
+
+        

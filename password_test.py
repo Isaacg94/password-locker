@@ -59,7 +59,7 @@ class TestCredentials(unittest.TestCase):
 
     def setUp(self):
         """
-        Method that will run before each test.
+        Method that will run before each test and creates a new instance of Credentials class before each test method is declared and stores it in an instance variable called self.new_contact
         """
         self.new_credential = Credentials("Instagram", "isaacgish", "123456")
 
@@ -85,6 +85,17 @@ class TestCredentials(unittest.TestCase):
         A method that clears the credentials object after test.
         """
         Credentials.credentials_list = []
+    
+    def test_delete_credential(self):
+        """
+        Test to check if we can remove a credential from the credentials list
+        """
+        # self.new_credential.save_credential()
+        # test_credential.save_credential()
+
+        self.new_credential.delete_credential()
+        self.assertEqual(len(Credentials.credentials_list),1)
+
 
     def test_display_credential(self):
         """
@@ -93,31 +104,15 @@ class TestCredentials(unittest.TestCase):
         
         self.assertEqual(Credentials.display_credential(),Credentials.credentials_list)
 
-    def test_find_by_site(self):
-        """
-        Method to test if credentials can be searched by site correctly.
-        """
+    def test_copy_password(self):
+        '''
+        Test to confirm that we are copying the password from a credential
+        '''
+
         self.new_credential.save_credential()
-        instagram = Credentials("instagram", "isaacgish", "123456")
-        instagram.save_credential()
-        credential_exists = Credentials.find_by_site("instagram")
-        self.assertEqual(credential_exists, instagram)
+        Credentials.copy_password("123456")
 
-    # def test_copy_credential(self):
-    #     """
-    #     Method to test if the copy credential function works correctly.
-    #     """
-    #     self.new_credential.save_credential()
-    #     instagram = Credentials("instagram", "isaacgish", "123456")
-    #     instagram.save_credential()
-    #     find_credential = None
-    #     for credential in Credentials.users_credentials_lists:
-    #         find_credential = Credentials.find_by_site(credential.site)
-    #         return pyperclip.copy(find_credential.password)
-    #     Credentials.copy_credential(self.new_credential.password)
-    #     self.assertEqual("123456", pyperclip.paste())
-    #     print(pyperclip.paste())
-
+        self.assertEqual(self.new_credential.password,pyperclip.paste())
 
 if __name__ == "__main__":
     unittest.main()

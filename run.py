@@ -1,4 +1,5 @@
 #!/usr/bin/env python3.6
+import pyperclip
 from passwords import User, Credentials
 
 def create_user (fname, lname, password):
@@ -34,12 +35,28 @@ def save_credentials(credential):
     """
     Credentials.save_credential(credential)
 
+def delete_credentials(credential):
+    """
+    Function to delete a credential.
+    """
+    Credentials.delete_credential(credential)
+
 def display_credentials():
     """
     Function to display saved credentials.
     """
     return Credentials.display_credential()
 
+def find_by_site(site):
+    """
+    Function to find credential by site.
+    """
+    return Credentials.find_by_site(site)
+def copy_password(site):
+    """
+    Function to copy password.
+    """
+    return Credentials.copy_password(site)
 
 
 def main():
@@ -72,7 +89,7 @@ def main():
             if user_exists(first_name, password):
                 print(f"Welcome {first_name}. Decide how you would like to proceed.")
                 while True:
-                    print("Use: \n sc - Create Credential \n sd - Display Credential \n sp - Copy \n ex - Exit")
+                    print("Use: \n sc - Create Credential \n sd - Display Credential \n dl - Delete Credentials \n ex - Exit")
                     print("Enter a choice")
                     short_code = input()
                     if short_code == 'sc':
@@ -96,6 +113,23 @@ def main():
                                 print(f"Site: {credential.site} \n Account name: {credential.user_name} \n Password: {credential.password}")
                         else:
                             print("You do not have any saved credentials")
+
+                    # elif short_code == 'sp':
+                    #     print("Enter the name of the credential you would like to copy")
+                    #     cpy_credit = input()
+                    #     srch_credit = find_by_site(cpy_credit)
+                    #     copy_password(srch_credit.password) 
+                    #     print("Credential has been copied successfully")
+
+                    elif short_code == 'dl':
+                        if len(display_credentials()) >= 1:
+                            print("Enter the name of the credential you would like to delete")
+                            del_credit = input()
+                            found_cred = find_by_site(del_credit)
+                            delete_credentials(found_cred)
+                            print("Credential has been deleted successfully")
+                        else:
+                            print("No Credential to delete")
 
                     elif short_code == 'ex':
                         break
