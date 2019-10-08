@@ -34,11 +34,11 @@ def save_credentials(credential):
     """
     Credentials.save_credential(credential)
 
-def display_credentials(user_name):
+def display_credentials():
     """
     Function to display saved credentials.
     """
-    return Credentials.display_credential(user_name)
+    return Credentials.display_credential()
 
 
 
@@ -65,17 +65,17 @@ def main():
         elif short_code == 'si':
             print("Enter account details to sign-in")
             print("Enter your first name")
-            user_name = input()
+            first_name = input()
             print("Enter your password")
             password = str(input())
-            user_exists = user_exists(user_name, password)
-            if user_exists == user_name:
-                print(f"Welcome {user_name}. Decide how you would like to proceed.")
+            # user_exists = user_exists(first_name, password)
+            if user_exists(first_name, password):
+                print(f"Welcome {first_name}. Decide how you would like to proceed.")
                 while True:
                     print("Use: \n sc - Create Credential \n sd - Display Credential \n sp - Copy \n ex - Exit")
                     print("Enter a choice")
                     short_code = input()
-                    if short_code = 'sc':
+                    if short_code == 'sc':
                         print("Enter Credential Details:")
                         print("Enter site name")
                         site = input()
@@ -89,13 +89,13 @@ def main():
                         print(f"Credential created for {site} - Account name: {user_name} - Password: {password}")
 
                     elif short_code == 'sd':
-                        if display_credentials(user_name):
+                        if len(display_credentials()) >= 1:
                             print("Here are your credentials")
 
-                            for credential in display_credentials(user_name):
+                            for credential in display_credentials():
                                 print(f"Site: {credential.site} \n Account name: {credential.user_name} \n Password: {credential.password}")
-                            else:
-                                print("You do not have any saved credentials")
+                        else:
+                            print("You do not have any saved credentials")
 
                     elif short_code == 'ex':
                         break

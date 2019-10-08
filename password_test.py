@@ -90,11 +90,8 @@ class TestCredentials(unittest.TestCase):
         """
         Test to check if credentials can be displayed.
         """
-        self.new_credential.save_credential()
-        instagram = Credentials("instagram", "isaacgish", "123456")
-        instagram.save_credential()
-        self.assertEqual(
-            len(Credentials.display_credential(instagram.user_name)), 2)
+        
+        self.assertEqual(Credentials.display_credential(),Credentials.credentials_list)
 
     def test_find_by_site(self):
         """

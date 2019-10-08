@@ -28,8 +28,8 @@ class User:
         current_user = ""
         for user in cls.users_list:
             if(user.first_name == first_name and user.password == password):
-                current_user = user.first_name
-        return current_user
+                return True
+        return False
 
 
 class Credentials:
@@ -37,7 +37,7 @@ class Credentials:
     Class that stores new instances of users credentials.
     """
     credentials_list = []
-    users_credentials_lists = []
+    # users_credentials_list = []
 
     def __init__(self, site, user_name, password):
 
@@ -52,15 +52,15 @@ class Credentials:
         Credentials.credentials_list.append(self)
 
     @classmethod
-    def display_credential(cls, user_name):
+    def display_credential(cls):
         """
         Class method that displays saved credentials.
         """
-        users_credentials_lists = []
-        for credential in cls.credentials_list:
-            if credential.user_name == user_name:
-                users_credentials_lists.append(credential)
-        return users_credentials_lists
+        # user_credentials_list = []
+        # for credential in cls.credentials_list:
+        #     if credential.site == site:
+        #         user_credentials_list.append(credential)
+        return cls.credentials_list
 
     @classmethod
     def find_by_site(cls, site):
